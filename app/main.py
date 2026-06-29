@@ -7,6 +7,7 @@ from app.api.episodes import router as episodes_router
 from app.api.scenes import router as scenes_router
 from app.api.characters import router as characters_router
 from app.api.scene_characters import router as scene_characters_router
+from app.api.storyboard import router as storyboard_router
 from app.blueprint.story_blueprint import router as blueprint_router
 from app.core.config import settings
 
@@ -29,6 +30,7 @@ app.include_router(episodes_router)
 app.include_router(scenes_router)
 app.include_router(characters_router)
 app.include_router(scene_characters_router)
+app.include_router(storyboard_router)
 app.include_router(blueprint_router)
 
 
