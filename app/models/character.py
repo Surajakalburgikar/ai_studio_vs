@@ -4,6 +4,7 @@ from sqlalchemy import DateTime, ForeignKey, Integer, String, Text, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database.base import Base
+from app.models.scene import scene_characters
 
 
 class Character(Base):
@@ -42,3 +43,4 @@ class Character(Base):
     )
 
     story = relationship("Story", back_populates="characters")
+    scenes = relationship("Scene", secondary=scene_characters, back_populates="characters")

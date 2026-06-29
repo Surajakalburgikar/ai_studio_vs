@@ -1,9 +1,17 @@
 from datetime import datetime
 
-from sqlalchemy import DateTime, Float, ForeignKey, Integer, String, Text, func
+from sqlalchemy import DateTime, Float, ForeignKey, Integer, String, Text, func, Table, Column
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database.base import Base
+
+
+scene_characters = Table(
+    "scene_characters",
+    Base.metadata,
+    Column("scene_id", Integer, ForeignKey("scenes.id"), primary_key=True),
+    Column("character_id", Integer, ForeignKey("characters.id"), primary_key=True),
+)
 
 
 class Scene(Base):
@@ -26,3 +34,4 @@ class Scene(Base):
     )
 
     episode = relationship("Episode", back_populates="scenes")
+    characters = relationship("Character", secondary=scene_characters, back_populates="scenes")
