@@ -10,6 +10,7 @@ from app.api.scene_characters import router as scene_characters_router
 from app.api.storyboard import router as storyboard_router
 from app.api.prompts import router as prompts_router
 from app.api.images import router as images_router
+from app.api.assets import router as assets_router
 from app.blueprint.story_blueprint import router as blueprint_router
 from app.core.config import settings
 
@@ -35,6 +36,7 @@ app.include_router(scene_characters_router)
 app.include_router(storyboard_router)
 app.include_router(prompts_router)
 app.include_router(images_router)
+app.include_router(assets_router)
 app.include_router(blueprint_router)
 
 
