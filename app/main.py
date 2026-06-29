@@ -11,6 +11,7 @@ from app.api.storyboard import router as storyboard_router
 from app.api.prompts import router as prompts_router
 from app.api.images import router as images_router
 from app.api.assets import router as assets_router
+from app.api.jobs import router as jobs_router
 from app.blueprint.story_blueprint import router as blueprint_router
 from app.core.config import settings
 
@@ -37,6 +38,7 @@ app.include_router(storyboard_router)
 app.include_router(prompts_router)
 app.include_router(images_router)
 app.include_router(assets_router)
+app.include_router(jobs_router)
 app.include_router(blueprint_router)
 
 

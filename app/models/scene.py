@@ -35,3 +35,5 @@ class Scene(Base):
 
     episode = relationship("Episode", back_populates="scenes")
     characters = relationship("Character", secondary=scene_characters, back_populates="scenes")
+    generation_jobs = relationship("GenerationJob", back_populates="scene", cascade="all, delete-orphan")
+
