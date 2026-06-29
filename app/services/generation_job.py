@@ -84,3 +84,18 @@ def complete_job(
         db.commit()
         db.refresh(job)
     return job
+
+
+def mark_failed(
+    db: Session,
+    job_id: int,
+    error_message: str,
+) -> GenerationJob | None:
+    """Mark a generation job as failed and save the error message."""
+    job = db.query(GenerationJob).filter(GenerationJob.id == job_id).first()
+    if job:
+        job.status = "failed"
+        job.error_message = error_message
+        db.commit()
+        db.refresh(job)
+    return job

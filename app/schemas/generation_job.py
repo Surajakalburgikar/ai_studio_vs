@@ -23,6 +23,12 @@ class GenerationJobComplete(BaseModel):
     generation_time: float | None = Field(None, description="Time taken to generate the asset in seconds")
 
 
+class GenerationJobFailed(BaseModel):
+    """Schema for failing a generation job."""
+
+    error_message: str = Field(..., description="Error message describing the failure")
+
+
 class GenerationJobResponse(BaseModel):
     """Schema for generation job API response."""
 
@@ -39,6 +45,7 @@ class GenerationJobResponse(BaseModel):
     progress: int
     drive_file_id: str | None
     generation_time: float | None
+    error_message: str | None
     created_at: datetime
     updated_at: datetime
 

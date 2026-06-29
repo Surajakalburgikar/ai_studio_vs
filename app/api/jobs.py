@@ -5,6 +5,7 @@ from app.database.session import get_db
 from app.schemas.generation_job import (
     GenerationJobComplete,
     GenerationJobCreate,
+    GenerationJobFailed,
     GenerationJobProgress,
     GenerationJobResponse,
 )
@@ -100,5 +101,29 @@ def complete_job_endpoint(
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"Generation job with id {id} not found",
+        )
+    return job
+
+
+@router.post(
+    "/{job_id}/failed",
+    response_model=GenerationJobResponse,
+    status_code=status.HTTP_200_OK,
+)
+def fail_job_endpoint(
+    job_id: int,
+    payload: GenerationJobFailed,
+    db: Session = Depends(get_db),
+):
+    """Mark a generation job as failed."""
+    job = job_service.mark_failed(
+        db,
+        job_id=job_id,
+        error_message=payload.error_message,
+    )
+    if not job:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Generation job with id {job_id} not found",
         )
     return job
