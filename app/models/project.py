@@ -77,4 +77,5 @@ class Project(Base):
     )
 
     stories = relationship("Story", back_populates="project")
+    production_plan = relationship("ProductionPlan", back_populates="project", uselist=False, cascade="all, delete-orphan")
 
