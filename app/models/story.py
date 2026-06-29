@@ -27,3 +27,4 @@ class Story(Base):
 
     project = relationship("Project", back_populates="stories")
     episodes = relationship("Episode", back_populates="story")
+    characters = relationship("Character", back_populates="story")

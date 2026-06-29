@@ -5,6 +5,7 @@ from app.api.projects import router as projects_router
 from app.api.stories import router as stories_router
 from app.api.episodes import router as episodes_router
 from app.api.scenes import router as scenes_router
+from app.api.characters import router as characters_router
 from app.blueprint.story_blueprint import router as blueprint_router
 from app.core.config import settings
 
@@ -25,6 +26,7 @@ app.include_router(projects_router)
 app.include_router(stories_router)
 app.include_router(episodes_router)
 app.include_router(scenes_router)
+app.include_router(characters_router)
 app.include_router(blueprint_router)
 
 
