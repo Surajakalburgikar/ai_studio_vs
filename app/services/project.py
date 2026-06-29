@@ -9,7 +9,16 @@ def create_project(db: Session, payload: ProjectCreate) -> Project:
     project = Project(
         title=payload.title,
         description=payload.description,
+        video_type=payload.video_type,
+        target_duration_seconds=payload.target_duration_seconds,
+        aspect_ratio=payload.aspect_ratio,
+        language=payload.language,
+        art_style=payload.art_style,
+        narration_style=payload.narration_style,
+        subtitle_language=payload.subtitle_language,
+        voice_gender=payload.voice_gender,
     )
+
     db.add(project)
     db.commit()
     db.refresh(project)
