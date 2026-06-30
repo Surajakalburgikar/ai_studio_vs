@@ -15,6 +15,7 @@ from .stage import PipelineStage
 from .project_pipeline import ProjectPipeline
 from .job_builder import JobBuilder
 from .production_summary import ProductionSummary
+from .directors.scene_director import SceneDirector
 from .exceptions import (
     StoryGenerationError,
     ProviderError,
@@ -34,6 +35,7 @@ __all__ = [
     "ProjectPipeline",
     "JobBuilder",
     "ProductionSummary",
+    "SceneDirector",
     "StoryGenerationError",
     "ProviderError",
     "ParserError",
