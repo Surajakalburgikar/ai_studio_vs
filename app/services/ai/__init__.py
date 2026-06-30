@@ -17,9 +17,11 @@ from .builders.job_builder import JobBuilder
 from .pipeline.production_summary import ProductionSummary
 from .directors.scene_director import SceneDirector
 from .planners.shot_planner import ShotPlanner
+from .registry.character_registry import CharacterRegistry
 from .models.scene_direction import SceneDirection
 from .models.shot_direction import ShotDirection
 from .models.shot_plan import ShotPlan
+from .models.character_profile import CharacterProfile
 from .exceptions import (
     StoryGenerationError,
     ProviderError,
@@ -41,9 +43,11 @@ __all__ = [
     "ProductionSummary",
     "SceneDirector",
     "ShotPlanner",
+    "CharacterRegistry",
     "SceneDirection",
     "ShotDirection",
     "ShotPlan",
+    "CharacterProfile",
     "StoryGenerationError",
     "ProviderError",
     "ParserError",

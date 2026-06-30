@@ -13,6 +13,7 @@ from app.services.ai.pipeline.stage import PipelineStage
 from app.services.ai.stages.story_stage import StoryStage
 from app.services.ai.stages.scene_director_stage import SceneDirectorStage
 from app.services.ai.stages.shot_planner_stage import ShotPlannerStage
+from app.services.ai.stages.character_registry_stage import CharacterRegistryStage
 from app.services.ai.stages.job_builder_stage import JobBuilderStage
 from app.services.ai.pipeline.production_summary import ProductionSummary
 
@@ -29,6 +30,7 @@ class ProjectPipeline:
             StoryStage(self.db),
             SceneDirectorStage(self.db),
             ShotPlannerStage(self.db),
+            CharacterRegistryStage(self.db),
             JobBuilderStage(self.db)
         ]
 

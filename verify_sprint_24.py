@@ -206,7 +206,7 @@ class TestPipelineE2E(unittest.TestCase):
         
         # Check stages ordering
         stage_names = [stage.__class__.__name__ for stage in pipeline.stages]
-        self.assertEqual(stage_names, ["StoryStage", "SceneDirectorStage", "ShotPlannerStage", "JobBuilderStage"])
+        self.assertEqual(stage_names, ["StoryStage", "SceneDirectorStage", "ShotPlannerStage", "CharacterRegistryStage", "JobBuilderStage"])
 
         variables = {
             "genre": "Fantasy",
