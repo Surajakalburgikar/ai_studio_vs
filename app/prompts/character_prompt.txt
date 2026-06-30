@@ -1,0 +1,19 @@
+# Character Profile Generation Prompt Template
+
+Analyze the following story text and generate a detailed visual profile for the character: {character_name}.
+
+[STORY CONTEXT]
+{story_text}
+
+[INSTRUCTIONS]
+Define the following attributes with descriptive tags:
+- Role (Protagonist, Antagonist, Supporting)
+- Age group
+- Gender
+- Height / Body Type
+- Hair color & style
+- Eye color
+- Outfit / Clothing details
+- Accessories
+- Art style directions
+- Negative prompts for visual consistency

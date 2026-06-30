@@ -1,0 +1,20 @@
+# Scene Directing & Storyboard Prompt Template
+
+Given the scene narration and camera directives, generate the storyboard breakdown and precise shot descriptions.
+
+[SCENE NARRATION]
+{narration}
+
+[CAMERA DIRECTIVES]
+{camera_notes}
+
+[CHARACTERS IN SCENE]
+{characters_metadata}
+
+[INSTRUCTIONS]
+For each shot, specify:
+1. Shot Type (Wide, Medium, Close-up, etc.)
+2. Camera Angle (High Angle, Low Angle, Eye Level, etc.)
+3. Shot Duration
+4. Detailed visual description combining character appearance and camera movements.
+5. Positive and negative prompt tags optimized for image generation.

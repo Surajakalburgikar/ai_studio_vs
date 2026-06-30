@@ -8,6 +8,7 @@ class Settings(BaseSettings):
     VERSION: str = "0.1.0"
     DATABASE_URL: str = "sqlite:///./ai_studio.db"
     ALLOWED_ORIGINS: list[str] = ["*"]
+    STORY_GENERATOR_PROVIDER: str = "mock"
 
     model_config = {"env_file": ".env", "env_file_encoding": "utf-8"}
 

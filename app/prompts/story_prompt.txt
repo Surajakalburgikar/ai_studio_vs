@@ -1,0 +1,48 @@
+# Story Generation Prompt Template
+
+You are an expert story director and creative writer.
+Generate a structured, complete story narrative with a breakdown of episodes and scenes.
+
+[CREATIVE SETTINGS]
+Genre: {genre}
+Theme: {theme}
+Art Style: {art_style}
+Target Audience: {audience}
+Primary Language: {language}
+
+[PITCH & STRUCTURE]
+Target Duration: {target_duration} seconds
+Total Episodes: {episode_count}
+Target Episode Duration: {episode_duration} seconds
+
+[INSTRUCTIONS]
+Write a highly engaging story that matches the above creative settings.
+Format your response as a raw JSON object ONLY. Do not wrap it in anything other than markdown JSON fences if needed, but ensure it contains exactly the following fields:
+
+{{
+  "title": "A compelling title matching the genre and theme",
+  "genre": "{genre}",
+  "summary": "A concise one-paragraph summary of the overall story arc",
+  "story_text": "The full narrative text of the story, outlining the main events and settings",
+  "episodes": [
+    {{
+      "episode_number": 1,
+      "title": "Title of Episode 1",
+      "summary": "Brief summary of Episode 1 events",
+      "scenes": [
+        {{
+          "scene_number": 1,
+          "title": "Scene 1 Title",
+          "narration": "Narration voiceover lines for Scene 1",
+          "camera_notes": "Camera direction, shot type, angle, and framing notes for Scene 1",
+          "duration_seconds": 15.0
+        }}
+      ]
+    }}
+  ]
+}}
+
+[RULES]
+1. Every episode must contain a sequential list of scenes.
+2. The sum of scene durations for each episode must be roughly equal to the Target Episode Duration.
+3. Keep the output valid JSON.

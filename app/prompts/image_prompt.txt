@@ -1,0 +1,9 @@
+# Diffusion Model Prompt Template
+
+Configure the final prompt structure sent to the diffusion model (e.g. FLUX, SDXL).
+
+[POSITIVE PROMPT]
+{positive_prompt}, masterwork, cinematic composition, high resolution, detailed texture, {art_style} style
+
+[NEGATIVE PROMPT]
+{negative_prompt}, low quality, blurry, extra limbs, bad anatomy, watermark, text
