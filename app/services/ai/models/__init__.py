@@ -4,5 +4,6 @@ Models package for AI services domain objects.
 
 from .scene_direction import SceneDirection
 from .shot_direction import ShotDirection
+from .shot_plan import ShotPlan
 
-__all__ = ["SceneDirection", "ShotDirection"]
+__all__ = ["SceneDirection", "ShotDirection", "ShotPlan"]

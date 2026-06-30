@@ -12,6 +12,7 @@ from app.services.ai.pipeline.pipeline_context import PipelineContext
 from app.services.ai.pipeline.stage import PipelineStage
 from app.services.ai.stages.story_stage import StoryStage
 from app.services.ai.stages.scene_director_stage import SceneDirectorStage
+from app.services.ai.stages.shot_planner_stage import ShotPlannerStage
 from app.services.ai.stages.job_builder_stage import JobBuilderStage
 from app.services.ai.pipeline.production_summary import ProductionSummary
 
@@ -27,6 +28,7 @@ class ProjectPipeline:
         self.stages: List[PipelineStage] = [
             StoryStage(self.db),
             SceneDirectorStage(self.db),
+            ShotPlannerStage(self.db),
             JobBuilderStage(self.db)
         ]
 

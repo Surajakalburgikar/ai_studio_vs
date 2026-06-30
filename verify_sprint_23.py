@@ -193,7 +193,7 @@ class TestProjectPipelineIntegration(unittest.TestCase):
 
         # Assert Stage Types ordering
         stage_names = [stage.__class__.__name__ for stage in pipeline.stages]
-        self.assertEqual(stage_names, ["StoryStage", "SceneDirectorStage", "JobBuilderStage"])
+        self.assertEqual(stage_names, ["StoryStage", "SceneDirectorStage", "ShotPlannerStage", "JobBuilderStage"])
 
         # Execute E2E pipeline
         summary = pipeline.generate_project(self.project.id, variables)
