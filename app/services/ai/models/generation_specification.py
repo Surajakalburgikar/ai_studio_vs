@@ -23,6 +23,12 @@ class GenerationSpecification:
     prompt_bundle: PromptBundle
     """Modular prompt components containing style, camera, and character details."""
 
+    compiled_positive_prompt: str = ""
+    """Fully compiled positive prompt string."""
+
+    compiled_negative_prompt: str = ""
+    """Fully compiled negative prompt string."""
+
     generation_parameters: Dict[str, Any] = field(default_factory=dict)
     """Engine-specific parameters (e.g. width, height, steps, guidance_scale, seed)."""
 

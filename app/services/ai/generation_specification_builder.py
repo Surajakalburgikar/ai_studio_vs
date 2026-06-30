@@ -1,0 +1,2 @@
+# Backward compatibility alias
+from .builders.generation_specification_builder import GenerationSpecificationBuilder
