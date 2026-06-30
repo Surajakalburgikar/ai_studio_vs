@@ -1,0 +1,3 @@
+# Positive prompt compilation template
+# Deterministic order: positive parts -> style -> quality -> camera -> character -> environment -> lighting -> composition -> technical
+{positive_prompt_parts}, {style_tags}, {quality_tags}, {camera_tags}, {character_tags}, {environment_tags}, {lighting_tags}, {composition_tags}, {technical_tags}

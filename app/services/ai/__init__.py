@@ -14,6 +14,8 @@ from .pipeline.pipeline_context import PipelineContext
 from .pipeline.stage import PipelineStage
 from .pipeline.project_pipeline import ProjectPipeline
 from .builders.job_builder import JobBuilder
+from .builders.prompt_builder import PromptBuilder
+from .stages.prompt_builder_stage import PromptBuilderStage
 from .pipeline.production_summary import ProductionSummary
 from .directors.scene_director import SceneDirector
 from .planners.shot_planner import ShotPlanner
@@ -42,6 +44,8 @@ __all__ = [
     "PipelineStage",
     "ProjectPipeline",
     "JobBuilder",
+    "PromptBuilder",
+    "PromptBuilderStage",
     "ProductionSummary",
     "SceneDirector",
     "ShotPlanner",

@@ -1,0 +1,2 @@
+# Negative prompt compilation template
+{negative_prompt_parts}
