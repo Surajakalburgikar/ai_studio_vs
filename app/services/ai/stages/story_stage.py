@@ -8,9 +8,8 @@ from datetime import datetime, timezone
 from typing import Dict, Any
 from sqlalchemy.orm import Session
 
-from app.services.ai.stage import PipelineStage
-from app.services.ai.pipeline_context import PipelineContext
-from app.services.ai.story_generator import StoryGenerator
+from app.services.ai.pipeline.stage import PipelineStage
+from app.services.ai.pipeline.pipeline_context import PipelineContext
 
 logger = logging.getLogger("ai_studio")
 
@@ -20,6 +19,7 @@ class StoryStage(PipelineStage):
 
     def __init__(self, db: Session) -> None:
         self.db = db
+        from app.services.ai.generators.story_generator import StoryGenerator
         self.generator = StoryGenerator(self.db)
 
     def run(self, context: PipelineContext) -> PipelineContext:

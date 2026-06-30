@@ -7,9 +7,9 @@ import time
 from datetime import datetime, timezone
 from sqlalchemy.orm import Session
 
-from app.services.ai.stage import PipelineStage
-from app.services.ai.pipeline_context import PipelineContext
-from app.services.ai.job_builder import JobBuilder
+from app.services.ai.pipeline.stage import PipelineStage
+from app.services.ai.pipeline.pipeline_context import PipelineContext
+from app.services.ai.builders.job_builder import JobBuilder
 
 logger = logging.getLogger("ai_studio")
 

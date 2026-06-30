@@ -5,17 +5,19 @@ This package contains the service modules interfaces and wrappers for interactin
 with LLMs, Diffusion models, and managing queue/generation state.
 """
 
-from .story_generator import StoryGenerator
-from .story_pipeline import StoryPipeline
-from .story_parser import StoryParser
-from .story_validator import StoryValidator
-from .story_repository import StoryRepository
-from .pipeline_context import PipelineContext
-from .stage import PipelineStage
-from .project_pipeline import ProjectPipeline
-from .job_builder import JobBuilder
-from .production_summary import ProductionSummary
+from .generators.story_generator import StoryGenerator
+from .pipeline.story_pipeline import StoryPipeline
+from .parsers.story_parser import StoryParser
+from .validators.story_validator import StoryValidator
+from .repositories.story_repository import StoryRepository
+from .pipeline.pipeline_context import PipelineContext
+from .pipeline.stage import PipelineStage
+from .pipeline.project_pipeline import ProjectPipeline
+from .builders.job_builder import JobBuilder
+from .pipeline.production_summary import ProductionSummary
 from .directors.scene_director import SceneDirector
+from .models.scene_direction import SceneDirection
+from .models.shot_direction import ShotDirection
 from .exceptions import (
     StoryGenerationError,
     ProviderError,
@@ -36,6 +38,8 @@ __all__ = [
     "JobBuilder",
     "ProductionSummary",
     "SceneDirector",
+    "SceneDirection",
+    "ShotDirection",
     "StoryGenerationError",
     "ProviderError",
     "ParserError",
