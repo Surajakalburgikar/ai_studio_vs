@@ -21,7 +21,9 @@ from .registry.character_registry import CharacterRegistry
 from .models.scene_direction import SceneDirection
 from .models.shot_direction import ShotDirection
 from .models.shot_plan import ShotPlan
-from .models.character_profile import CharacterProfile
+from .models.character_profile import CharacterProfile, CharacterVisualState
+from .models.prompt_bundle import PromptBundle
+from .models.generation_specification import GenerationSpecification
 from .exceptions import (
     StoryGenerationError,
     ProviderError,
@@ -48,6 +50,9 @@ __all__ = [
     "ShotDirection",
     "ShotPlan",
     "CharacterProfile",
+    "CharacterVisualState",
+    "PromptBundle",
+    "GenerationSpecification",
     "StoryGenerationError",
     "ProviderError",
     "ParserError",

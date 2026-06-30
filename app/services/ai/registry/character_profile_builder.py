@@ -4,7 +4,7 @@ Character Profile Builder.
 
 from typing import List, Set, Any
 from app.models.character import Character
-from app.services.ai.models.character_profile import CharacterProfile
+from app.services.ai.models.character_profile import CharacterProfile, CharacterVisualState
 from app.services.ai.models.shot_plan import ShotPlan
 from app.services.ai.registry.character_normalizer import CharacterNormalizer
 
@@ -87,6 +87,7 @@ class CharacterProfileBuilder:
             negative_prompt=character.negative_prompt,
             scene_history=sorted(list(scene_ids)),
             shot_history=shot_ids,
+            current_visual_state=CharacterVisualState(),
             metadata={"status": character.status, "role": character.role}
         )
         return profile

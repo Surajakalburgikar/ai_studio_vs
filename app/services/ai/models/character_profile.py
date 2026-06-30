@@ -7,6 +7,32 @@ from typing import Dict, Any, List, Optional
 
 
 @dataclass
+class CharacterVisualState:
+    """Represents the active visual configuration for continuity tracking."""
+
+    outfit: Optional[str] = None
+    """Current outfit/clothing state."""
+
+    expression: Optional[str] = None
+    """Current facial expression."""
+
+    pose: Optional[str] = None
+    """Current stance, posture, or action pose."""
+
+    props: Optional[str] = None
+    """Carried items or active scene props in hand."""
+
+    injuries: Optional[str] = None
+    """Visual signs of damage (e.g. cuts, bruises, scars)."""
+
+    weather_effects: Optional[str] = None
+    """Environmental details affecting appearance (e.g. wet hair, snow on clothes)."""
+
+    temporary_changes: Optional[str] = None
+    """Transient physical alterations (e.g. glowing eyes, dirty hands)."""
+
+
+@dataclass
 class CharacterProfile:
     """Canonical visual consistency profile for a recurring character."""
 
@@ -66,6 +92,9 @@ class CharacterProfile:
 
     shot_history: List[int] = field(default_factory=list)
     """Identifiers/indexes of shots in which the character appears."""
+
+    current_visual_state: CharacterVisualState = field(default_factory=CharacterVisualState)
+    """Active visual configuration representing current visual continuity."""
 
     metadata: Dict[str, Any] = field(default_factory=dict)
     """Extensible metadata payload for variables or experimental parameters."""
