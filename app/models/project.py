@@ -75,6 +75,8 @@ class Project(Base):
     voice_gender: Mapped[VoiceGender] = mapped_column(
         SQLEnum(VoiceGender, values_callable=lambda x: [e.value for e in x], native_enum=False), default=VoiceGender.MALE, nullable=False
     )
+    continuity_key: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    preferred_story_model: Mapped[str | None] = mapped_column(String(255), nullable=True)
 
     stories = relationship("Story", back_populates="project")
     production_plan = relationship("ProductionPlan", back_populates="project", uselist=False, cascade="all, delete-orphan")

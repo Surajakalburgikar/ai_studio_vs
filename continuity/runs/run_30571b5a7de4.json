@@ -1,0 +1,32 @@
+{
+  "run_id": "run_30571b5a7de4",
+  "continuity_key": "con_ec243cdf8ff1",
+  "project_id": 3,
+  "status": "active",
+  "created_at": "2026-07-01T06:52:02.702709",
+  "updated_at": "2026-07-01T06:52:02.802058",
+  "checkpoint": {
+    "continuity_key": "con_ec243cdf8ff1",
+    "project_id": 3,
+    "scene_id": 0,
+    "last_completed_step": "started",
+    "last_completed_shot_number": 0,
+    "last_completed_scene_number": 0,
+    "status": "active",
+    "episode_id": null,
+    "shot_id": null,
+    "job_id": null,
+    "prompt_hash": "",
+    "provider": "",
+    "model": "",
+    "output_path": "",
+    "generation_time": 0.0,
+    "retry_count": 0,
+    "metadata": {
+      "pause_reason": "quality check needed"
+    }
+  },
+  "metadata": {
+    "pause_reason": "quality check needed"
+  }
+}

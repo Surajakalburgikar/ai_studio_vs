@@ -18,9 +18,9 @@ class GenerationSpecificationBuilder:
     """Builder class that builds and validates GenerationSpecification payloads."""
 
     def __init__(self, allowed_providers: Optional[List[str]] = None) -> None:
-        # Task 5: Allow configurable providers, default to ['flux', 'mock']
+        # Task 5: Allow configurable providers, default to ['flux', 'mock', 'fal-ai', 'huggingface', 'fal_ai']
         self.allowed_providers = [
-            p.lower() for p in (allowed_providers or ["flux", "mock"])
+            p.lower() for p in (allowed_providers or ["flux", "mock", "fal-ai", "huggingface", "fal_ai"])
         ]
 
     def build_specification(
@@ -51,19 +51,44 @@ class GenerationSpecificationBuilder:
         neg_prompt = prompt_bundle.compile_negative_prompt()
         logger.info("Prompt compiled.")
 
-        # 2. Select Provider
-        # Task 5: Provider Selection from Project configuration / env overrides
-        provider_val = getattr(project, "provider", None)
-        if not provider_val:
-            provider_val = os.getenv("IMAGE_GENERATOR_PROVIDER", "flux")
-        provider = str(provider_val).lower().strip()
-        logger.info(f"Provider selected: {provider}")
+        # 2. Select Provider using ProviderPolicy
+        from app.services.ai.policies.provider_policy import ProviderPolicy
+        from app.services.ai.exceptions import QualityPolicyPauseException
+        from app.core.config import settings
 
-        # Determine Model
-        model_val = getattr(project, "model", None)
-        if not model_val:
-            model_val = "flux-dev" if provider == "flux" else "mock-model"
-        model = str(model_val).lower().strip()
+        policy = ProviderPolicy(
+            mode=settings.PIPELINE_MODE,
+            allow_quality_downgrade=settings.ALLOW_QUALITY_DOWNGRADE,
+            preferred_model=settings.PREFERRED_MODEL_PROFILE.get("model", "black-forest-labs/FLUX.1-dev"),
+            preferred_transport=settings.PREFERRED_PROVIDER_PROFILE.get("provider", "fal-ai")
+        )
+
+        available = {
+            "black-forest-labs/flux.1-dev": ["fal-ai", "huggingface", "comfyui", "flux"],
+            "black-forest-labs/flux.1-schnell": ["huggingface", "flux"],
+            "mock-model": ["mock"]
+        }
+
+        req_model = getattr(project, "model", None) or policy.get_preferred_model()
+        req_transport = getattr(project, "provider", None) or policy.preferred_transport
+
+        model_selected, transport_selected, action = policy.select_route(
+            req_model, req_transport, available
+        )
+
+        if action == "fail":
+            raise ValidationError(f"Quality policy failure: {req_model} is unavailable. Failing closed.")
+        elif action == "pause":
+            raise QualityPolicyPauseException(f"Quality policy warning: {req_model} is unavailable. Pausing production.")
+
+        provider = transport_selected
+        model = model_selected
+        
+        # Inject quality settings into metadata so the worker can inspect them
+        if metadata is None:
+            metadata = {}
+        metadata["quality_mode"] = settings.PIPELINE_MODE
+        metadata["allow_quality_downgrade"] = settings.ALLOW_QUALITY_DOWNGRADE
 
         # 3. Generation Parameters
         # Task 6: Populate width, height, steps, guidance_scale, seed, aspect_ratio

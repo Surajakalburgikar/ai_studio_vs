@@ -34,3 +34,18 @@ class GenerationJob(Base):
     )
 
     scene = relationship("Scene", back_populates="generation_jobs")
+
+    @property
+    def project_id(self) -> int | None:
+        try:
+            return self.scene.episode.story.project_id
+        except Exception:
+            return None
+
+    @property
+    def scene_number(self) -> int | None:
+        try:
+            return self.scene.scene_number
+        except Exception:
+            return None
+

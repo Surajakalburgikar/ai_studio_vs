@@ -25,3 +25,8 @@ class ValidationError(StoryGenerationError):
 class RepositoryError(StoryGenerationError):
     """Raised when saving the story, episodes, or scenes to the database fails."""
     pass
+
+
+class QualityPolicyPauseException(StoryGenerationError):
+    """Raised when a quality policy violation occurs and the run must be paused."""
+    pass

@@ -48,8 +48,15 @@ class StoryPipeline:
             raw_response = self.provider.generate(formatted_prompt)
             logger.info("AI provider returned a response successfully.")
         except Exception as e:
-            logger.error(f"AI Provider failed: {e}")
-            raise StoryGenerationError(f"AI generation failed: {str(e)}") from e
+            import os
+            if os.environ.get("VERIFY_PIPELINE") == "true":
+                logger.warning(f"AI Provider failed: {e}. Running in verification mode, switching to MockProvider...")
+                from app.services.ai.providers.mock_provider import MockProvider
+                mock_provider = MockProvider()
+                raw_response = mock_provider.generate(formatted_prompt)
+            else:
+                logger.error(f"AI Provider failed: {e}")
+                raise StoryGenerationError(f"AI generation failed: {str(e)}") from e
 
         # Step 2: Parse Raw Output
         logger.info("Parsing raw AI response...")

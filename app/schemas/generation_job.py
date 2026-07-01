@@ -21,6 +21,7 @@ class GenerationJobComplete(BaseModel):
 
     drive_file_id: str | None = Field(None, description="Drive file ID")
     generation_time: float | None = Field(None, description="Time taken to generate the asset in seconds")
+    provider: str | None = Field(None, description="The actual provider/transport/model used for generation")
 
 
 class GenerationJobFailed(BaseModel):
@@ -43,6 +44,8 @@ class GenerationJobResponse(BaseModel):
     priority: int
     retry_count: int
     progress: int
+    project_id: int | None = None
+    scene_number: int | None = None
     drive_file_id: str | None
     generation_time: float | None
     error_message: str | None

@@ -13,6 +13,8 @@ from app.api.images import router as images_router
 from app.api.assets import router as assets_router
 from app.api.jobs import router as jobs_router
 from app.blueprint.story_blueprint import router as blueprint_router
+from app.api.orchestration import router as orchestration_router
+from app.api.system import router as system_router
 from app.core.config import settings
 
 app = FastAPI(
@@ -40,6 +42,8 @@ app.include_router(images_router)
 app.include_router(assets_router)
 app.include_router(jobs_router)
 app.include_router(blueprint_router)
+app.include_router(orchestration_router)
+app.include_router(system_router)
 
 
 @app.get("/")

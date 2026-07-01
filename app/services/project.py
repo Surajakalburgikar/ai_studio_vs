@@ -17,6 +17,7 @@ def create_project(db: Session, payload: ProjectCreate) -> Project:
         narration_style=payload.narration_style,
         subtitle_language=payload.subtitle_language,
         voice_gender=payload.voice_gender,
+        preferred_story_model=payload.preferred_story_model,
     )
 
     db.add(project)

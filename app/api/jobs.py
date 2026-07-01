@@ -96,6 +96,7 @@ def complete_job_endpoint(
         job_id=id,
         drive_file_id=payload.drive_file_id,
         generation_time=payload.generation_time,
+        provider=payload.provider,
     )
     if not job:
         raise HTTPException(

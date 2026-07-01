@@ -94,6 +94,41 @@ class CharacterRegistry:
                 active_characters.append(new_char)
                 existing_characters.append(new_char)
 
+        # Resolve characters against the continuity manifest if present
+        continuity_key = getattr(context.project, "continuity_key", None)
+        if continuity_key:
+            from app.services.ai.continuity.continuity_manager import ContinuityManager
+            from app.services.ai.continuity.continuity_resolver import ContinuityResolver
+            manager = ContinuityManager()
+            manifest = manager.load_manifest(continuity_key)
+            if manifest and manifest.canonical_characters:
+                resolver = ContinuityResolver()
+                char_dicts = []
+                for char in active_characters:
+                    char_dicts.append({
+                        "name": char.name,
+                        "description": char.description,
+                        "hair_style": getattr(char, "hair_style", None),
+                        "hair_color": getattr(char, "hair_color", None),
+                        "eye_color": getattr(char, "eye_color", None),
+                        "skin_tone": getattr(char, "skin_tone", None),
+                        "body_type": getattr(char, "body_type", None),
+                        "age": getattr(char, "age", None),
+                        "clothing": getattr(char, "clothing", None),
+                        "accessories": getattr(char, "accessories", None),
+                        "consistency_notes": getattr(char, "consistency_notes", None),
+                        "reference_prompt": getattr(char, "reference_prompt", None),
+                        "negative_prompt": getattr(char, "negative_prompt", None),
+                    })
+                resolved_dicts = resolver.resolve_characters(manifest, char_dicts)
+                for i, char in enumerate(active_characters):
+                    resolved = resolved_dicts[i]
+                    for key, val in resolved.items():
+                        if val is not None and hasattr(char, key):
+                            setattr(char, key, val)
+                    self.db.add(char)
+                self.db.commit()
+
         # 4. Build Profiles and Indexes
         context.characters = active_characters
         context.character_profiles = {}

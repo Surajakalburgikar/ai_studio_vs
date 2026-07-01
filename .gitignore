@@ -32,3 +32,5 @@ build/
 
 # Generated files
 generated/
+app/runtime/*.json
+*.png

@@ -6,6 +6,10 @@ from app.models.character import Character  # noqa: F401
 from app.models.generation_job import GenerationJob  # noqa: F401
 from app.models.production_plan import ProductionPlan  # noqa: F401
 from app.models.timeline_event import TimelineEvent  # noqa: F401
+from app.models.asset import Asset  # noqa: F401
+from app.models.asset_collection import AssetCollection  # noqa: F401
+from app.models.asset_tag import AssetTag  # noqa: F401
+from app.models.asset_usage import AssetUsage  # noqa: F401
 
 
 

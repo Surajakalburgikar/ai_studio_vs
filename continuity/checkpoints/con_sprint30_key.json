@@ -1,0 +1,19 @@
+{
+  "continuity_key": "con_sprint30_key",
+  "project_id": 2,
+  "scene_id": 2,
+  "last_completed_step": "job_completed",
+  "last_completed_shot_number": 1,
+  "last_completed_scene_number": 1,
+  "status": "active",
+  "episode_id": 2,
+  "shot_id": null,
+  "job_id": 1,
+  "prompt_hash": "",
+  "provider": "huggingface",
+  "model": "",
+  "output_path": "/path/to/image_final.png",
+  "generation_time": 5.2,
+  "retry_count": 0,
+  "metadata": {}
+}

@@ -1,0 +1,36 @@
+{
+  "continuity_key": "con_ec243cdf8ff1",
+  "series_title": "Sprint 29 Test Series Part 1",
+  "universe_title": "Universe for Sprint 29 Test Series Part 1",
+  "continuity_version": 1,
+  "current_arc": "",
+  "current_part": "",
+  "canonical_characters": {},
+  "canonical_locations": {},
+  "canonical_facts": [],
+  "timeline_anchor": {},
+  "last_project_id": 4,
+  "last_episode_number": null,
+  "last_scene_number": null,
+  "last_shot_number": null,
+  "active_character_states": {},
+  "active_world_state": {},
+  "preferred_model_profile": {},
+  "preferred_provider_profile": {},
+  "quality_policy": {},
+  "metadata": {},
+  "_revision_history": [
+    {
+      "revision_number": 1,
+      "created_at": "2026-07-01T06:52:02.843740+00:00",
+      "project_id": 4,
+      "reason": "Continued into project 4",
+      "author": "system",
+      "summary": "Story universe continued from project 3 to project 4",
+      "timeline_snapshot": {},
+      "character_snapshot": {},
+      "world_snapshot": {},
+      "metadata": {}
+    }
+  ]
+}

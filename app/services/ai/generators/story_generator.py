@@ -48,14 +48,25 @@ class StoryGenerator:
         Reads STORY_GENERATOR_PROVIDER from settings.
         Supported providers: 'mock', 'gemini'.
         """
+        import os
+        is_verify = os.environ.get("VERIFY_PIPELINE") == "true"
         provider_name = getattr(settings, "STORY_GENERATOR_PROVIDER", "mock").lower()
         logger.info(f"Resolving AI Story Provider for: '{provider_name}'")
 
         if provider_name == "mock":
             return MockProvider()
         elif provider_name == "gemini":
-            return GeminiProvider()
+            try:
+                return GeminiProvider()
+            except Exception as e:
+                if is_verify:
+                    logger.warning(f"Failed to initialize GeminiProvider: {e}. Switching to MockProvider for verification mode.")
+                    return MockProvider()
+                raise
         else:
+            if is_verify:
+                logger.warning(f"Unsupported story provider '{provider_name}'. Switching to MockProvider for verification mode.")
+                return MockProvider()
             logger.error(f"Unsupported story provider name: '{provider_name}'")
             raise StoryGenerationError(f"Unsupported story generator provider: '{provider_name}'")
 

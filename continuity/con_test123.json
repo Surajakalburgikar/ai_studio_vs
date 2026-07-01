@@ -1,0 +1,33 @@
+{
+  "continuity_key": "con_test123",
+  "series_title": "Test Series",
+  "universe_title": "Test Universe",
+  "continuity_version": 1,
+  "current_arc": "",
+  "current_part": "",
+  "canonical_characters": {
+    "alice": {
+      "name": "Alice",
+      "description": "Alice in Wonderland",
+      "hair_style": "long ponytail",
+      "hair_color": "blonde",
+      "eye_color": "blue",
+      "clothing": "blue dress"
+    }
+  },
+  "canonical_locations": {},
+  "canonical_facts": [
+    "The sword glows blue near monsters."
+  ],
+  "timeline_anchor": {},
+  "last_project_id": null,
+  "last_episode_number": null,
+  "last_scene_number": null,
+  "last_shot_number": null,
+  "active_character_states": {},
+  "active_world_state": {},
+  "preferred_model_profile": {},
+  "preferred_provider_profile": {},
+  "quality_policy": {},
+  "metadata": {}
+}

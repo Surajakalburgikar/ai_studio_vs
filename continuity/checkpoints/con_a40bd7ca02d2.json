@@ -1,0 +1,19 @@
+{
+  "continuity_key": "con_a40bd7ca02d2",
+  "project_id": 4,
+  "scene_id": 0,
+  "last_completed_step": "started",
+  "last_completed_shot_number": 0,
+  "last_completed_scene_number": 0,
+  "status": "active",
+  "episode_id": null,
+  "shot_id": null,
+  "job_id": null,
+  "prompt_hash": "",
+  "provider": "",
+  "model": "",
+  "output_path": "",
+  "generation_time": 0.0,
+  "retry_count": 0,
+  "metadata": {}
+}

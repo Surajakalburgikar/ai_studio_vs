@@ -18,6 +18,7 @@ class ProjectCreate(BaseModel):
     narration_style: NarrationStyle = Field(default=NarrationStyle.THIRD_PERSON, description="Narration style configuration")
     subtitle_language: str = Field(default="English", description="Subtitle language")
     voice_gender: VoiceGender = Field(default=VoiceGender.MALE, description="Voice gender configuration")
+    preferred_story_model: str | None = Field(default=None, description="Preferred story model")
 
 
 class ProjectResponse(BaseModel):
@@ -36,6 +37,7 @@ class ProjectResponse(BaseModel):
     narration_style: NarrationStyle
     subtitle_language: str
     voice_gender: VoiceGender
+    preferred_story_model: str | None = None
 
     model_config = {"from_attributes": True}
 
